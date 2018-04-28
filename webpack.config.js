@@ -1,7 +1,16 @@
+import find from 'lodash/find';
+import values from 'lodash/values';
 const path = require( 'path' );
 const webpack = require( 'webpack' );
+const requireGlob  = require( 'require-glob' );
+const merge = require( 'webpack-merge' );
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
+
+// Load module-specific configs.
+const moduleConfigsNested = values( requireGlob.sync( path.join( __dirname, 'modules/**/webpack.config.js' ) ) );
+// Configs are nested in property; need to bring them up one level.
+const moduleConfigs = moduleConfigsNested.map( c => find( c ) );
 
 const webpackConfig = {
 
@@ -116,4 +125,6 @@ if ( NODE_ENV === 'production' ) {
 	} );
 }
 
-module.exports = webpackConfig;
+const mergedConfigs = merge( [ ...moduleConfigs, webpackConfig ] );
+
+module.exports = mergedConfigs;

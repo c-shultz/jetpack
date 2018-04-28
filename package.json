@@ -129,11 +129,13 @@
     "react-tap-event-plugin": "^2.0.0",
     "redux": "^3.3.1",
     "redux-thunk": "^2.0.1",
+    "require-glob": "^3.2.0",
     "sass-loader": "6.0.6",
     "style-loader": "0.13",
     "uglify-save-license": "^0.4.1",
     "url-loader": "^0.5.7",
     "webpack": "3.8.1",
+    "webpack-merge": "^4.1.2",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
