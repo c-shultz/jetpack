@@ -366,7 +366,8 @@ gulp.task( 'eslint', function() {
 	return gulp.src( [
 		'_inc/client/**/*.js',
 		'_inc/client/**/*.jsx',
-		'!_inc/client/**/test/*.js'
+		'!_inc/client/**/test/*.js',
+		'modules/**/*.jsx'
 	] )
 		.pipe( eslint() )
 		.pipe( eslint.format() )
